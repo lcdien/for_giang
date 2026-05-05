@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Anh Giang - Một tâm hồn đặc biệt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --glass: rgba(255, 255, 255, 0.15);
+            --border: rgba(255, 255, 255, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0f0c29;
+            background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hiệu ứng hạt sáng bay lơ lửng */
+        #canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        .main-card {
+            position: relative;
+            z-index: 10;
+            width: 380px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 40px;
+            border: 1px solid var(--border);
+            padding: 40px 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            text-align: center;
+            animation: fadeInCard 1.5s ease-out;
+        }
+
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .img-container {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
+            position: relative;
+        }
+
+        .img-container::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border: 2px dashed var(--secondary);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .sub-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .content-box {
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            font-weight: 300;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: #fab1a0;
+            font-weight: 500;
+        }
+
+        .btn-reveal {
+            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+        }
+
+        .btn-reveal:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.5);
+        }
+
+        #hidden-gift {
+            display: none;
+            margin-top: 20px;
+            font-style: italic;
+            color: #ffeaa7;
+            animation: zoomIn 0.5s ease;
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .floating-icons {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.5;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="floating-icons" style="top: 15%; left: 10%; animation-delay: 0s;">🌿</div>
+    <div class="floating-icons" style="top: 20%; right: 15%; animation-delay: 1s;">⚖️</div>
+    <div class="floating-icons" style="bottom: 15%; left: 20%; animation-delay: 2s;">🍳</div>
+    <div class="floating-icons" style="bottom: 20%; right: 10%; animation-delay: 1.5s;">📖</div>
+
+    <div class="main-card">
+        <div class="img-container">
+            <img src="https://i.imgur.com/LhB2uUo.jpg" alt="Anh Giang" class="profile-img">
+        </div>
+
+        <h1>Anh Giang</h1>
+        <span class="sub-title">A special soul</span>
+
+        <div class="content-box">
+            Gửi Giang, tớ rất trân trọng một cô gái ngành <span class="highlight">Môi trường</span> đầy bản lĩnh, luôn hướng tới mục tiêu <span class="highlight">Luật học</span> xa xôi. 
+            Và thật tuyệt khi biết Giang còn là một <span class="highlight">"đầu bếp"</span> đầy đam mê nữa. 
+            Cứ vững tin bước tiếp nhé, vì Giang xứng đáng với những điều tốt đẹp nhất!
+        </div>
+
+        <button class="btn-reveal" onclick="showGift()">Dành cho Giang</button>
+        
+        <div id="hidden-gift">
+            "Hy vọng một ngày không xa, tớ sẽ được nếm thử món ăn của Giang và nghe Giang kể về những điều luật thú vị. Luôn rạng rỡ nhé!"
+        </div>
+    </div>
+
+    <script>
+        // Hiệu ứng hạt sáng bay (Particle Effect)
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particles = [];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.01;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255,255,255,0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].size <= 0.2) {
+                    particles.splice(i, 1);
+                    i--;
+                    particles.push(new Particle());
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        init();
+        animate();
+
+        function showGift() {
+            document.getElementById('hidden-gift').style.display = 'block';
+            document.querySelector('.btn-reveal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
